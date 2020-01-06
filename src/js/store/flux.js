@@ -9,7 +9,8 @@ const getState = ({ getStore, setStore }) => {
 					address: "",
 					agenda_slug: ""
 				}
-			]
+			],
+			agenda: []
 		},
 		actions: {
 			//(Arrow) Functions that update the Store
@@ -28,6 +29,18 @@ const getState = ({ getStore, setStore }) => {
 				});
 
 				console.log("clicked", a, b, c, d);
+			},
+			deleteContact: () => {
+				fetch("https://assets.breatheco.de/apis/fake/contact/", {
+					method: "DELETE",
+					headers: { "Content-Type": "aplication/json" }
+				}).then(() => {
+					fetch("https://assets.breatheco.de/apis/fake/contact/agenda/ivetted")
+						.then(response => response.json())
+						.then(data => {
+							setStore({ agenda: data });
+						});
+				});
 			}
 		}
 	};

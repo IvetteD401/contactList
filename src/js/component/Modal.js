@@ -29,7 +29,11 @@ export const Modal = props => {
 						<p>Warning: unknown consequences after this point... Kidding!</p>
 					</div>
 					<div className="modal-footer">
-						<button type="button" className="btn btn-primary">
+						<button
+							type="button"
+							data-dismiss="modal"
+							onClick={() => props.onClose()}
+							className="btn btn-primary">
 							Oh no!
 						</button>
 						<button type="button" className="btn btn-secondary" data-dismiss="modal">
